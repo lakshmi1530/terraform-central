@@ -1,5 +1,5 @@
-output "availability_zones" {
-    value = data.aws_availability_zones.available.names
+output "azs_info" {
+    value = data.aws_availability_zones.available
 }
 
 output "vpc_id" {
