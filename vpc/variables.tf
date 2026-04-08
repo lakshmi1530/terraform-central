@@ -45,12 +45,42 @@ variable "private_subnet_tags" {
   default = {}
 }
 
-variable "db_subnet_cidr" {
+variable "database_subnet_cidr" {
   type = list(string)
   default = ["10.0.21.0/24", "10.0.22.0/24"]
 }
 
-variable "db_subnet_tags" {
+variable "database_subnet_tags" {
   type = map(string)
   default = {}
+}
+
+variable "public_route_table_tags" {
+    default = {}
+    type = map
+}
+
+variable "private_route_table_tags" {
+    default = {}
+    type = map
+}
+
+variable "database_route_table_tags" {
+    default = {}
+    type = map
+}
+
+variable "eip_tags" {
+    default = {}
+    type = map
+}
+
+variable "nat_gateway_tags" {
+    default = {}
+    type = map
+}
+
+variable "is_peering_required" {
+    default = false
+    type = bool
 }
