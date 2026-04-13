@@ -10,8 +10,8 @@ variable "project" {
     type = string
 }
 
-variable "sg_name" {
-    type = string
+variable "sg_names" {
+    type = list(string)
 }
 
 variable "vpc_id" {

@@ -1,7 +1,8 @@
 resource "aws_security_group" "main" {
+  count = length(var.sg_names)
   vpc_id = var.vpc_id
-  description = "allows inbound traffic for ${var.project} in ${var.environment} environment to ${var.sg_name} application"
-  name = "${var.project}-${var.environment}-${var.sg_name}" #roboshop-dev-catalog-sg
+  description = "allows inbound traffic for ${var.project} in ${var.environment} environment to ${var.sg_names[count.index]} application"
+  name = "${var.project}-${var.environment}-${var.sg_names[count.index]}" #roboshop-dev-catalog-sg
   egress {
     from_port        = 0
     to_port          = 0
@@ -13,7 +14,7 @@ resource "aws_security_group" "main" {
     var.sg_tags,
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-${var.sg_name}"
+        Name = "${var.project}-${var.environment}-${var.sg_names[count.index]}" #roboshop-dev-catalog-sg, roboshop-dev-user-sg ...
     }
   )
 }
